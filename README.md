@@ -95,6 +95,10 @@ cd Desktop/object_detect_demo_venv
 When prompted, select the desired object classes, or enter 'd' to use the default list.
 <img src="images/class_list.png" width="850">
 
+Example:
+If you want to detect Person, Glasses, Tie, and Monitor/TV, enter: 233,136,325,201
+<img src="images/choose_classes_example.png" width="850">
+
 Press 'q' to exit fullscreen mode.
 
 ---
