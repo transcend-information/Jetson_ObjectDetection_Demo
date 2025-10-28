@@ -47,7 +47,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 ## Download Virtual Environment
 
 1. Download the **Virtual Environment** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/object_detect_demo_venv.zip
-2. Unzip the downloaded ZIP file.
+2. Unzip the downloaded ZIP file on the Jetson Orin Nano.
 3. Copy the extracted **object_detect_demo_venv** folder to the desktop.
 
 ---
@@ -89,6 +89,11 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 ```bash
 cd Desktop/object_detect_demo_venv
 ./run_webcam.sh
+```
+
+**Note:** If you get a "Permission denied" error, you may need to give full execution permissions to the folder. Run this command:
+```
+chmod -R 777 ~/Desktop/object_detect_demo_venv
 ```
 
 ### 2. Choose the Detection Classes
