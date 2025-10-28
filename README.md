@@ -137,6 +137,7 @@ gst-launch-1.0 nvarguscamerasrc ! 'video/x-raw(memory:NVMM),width=1920,height=10
 ```
 
 ### 3.Run the YOLO detection script
+Open a new terminal window and run the following command
 ```bash
 python webcam_yolo.py
 ```
