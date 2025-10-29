@@ -13,7 +13,6 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 * [Download Virtual Environment](#download-virtual-environment)
 * [Connect the ECM300 Camera](#connect-the-ecm300-camera-to-jetson-orin-nano)
 * [Quicky Run Object Detect](#quicky-run-object-detect)
-* [Set Up Virtual Environment](#set-up-a-virtual-environment)
 * [Run Object Detect](#run-object-detect)
 * [Third-Party Licenses](#third-party-licenses)
 
@@ -108,41 +107,41 @@ Press 'q' to exit fullscreen mode.
 
 ---
 
-## Set Up a Virtual Environment
-
-```bash
-cd Desktop/object_detect_demo_venv
-source .venv/bin/activate
-```
-
-To deactivate the virtual environment:
-
-```bash
-deactivate
-```
-
----
-
 ## Run Object Detect
 
-### 1.Set Up a Virtual Camera 
+### 1. Set up a virtual camera
+
 ```bash
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 ```
 
-### 2.Start the GStreamer Pipeline
+### 2. Start the GStreamer pipeline
+
 ```bash
 echo "Starting GStreamer camera pipeline in the background..."
 gst-launch-1.0 nvarguscamerasrc ! 'video/x-raw(memory:NVMM),width=1920,height=1080,format=NV12,framerate=30/1' ! nvvidconv ! 'video/x-raw, format=I420' ! videoconvert ! 'video/x-raw, format=BGR' ! v4l2sink device=/dev/video10
 ```
 
-### 3.Run the YOLO detection script
-Open a new terminal window and run the following command
+### 3. Set Up a Virtual Environment
+Open a new terminal window, then activate the virtual environment before running the detection script.
+
+Activate the virtual environment:
+```bash
+cd ~/Desktop/object_detect_demo_venv
+source .venv/bin/activate
+```
+
+### 4. Run the YOLO detection script:
 ```bash
 python webcam_yolo.py
 ```
 
 Press 'q' to exit fullscreen mode.
+
+To deactivate the virtual environment:
+```bash
+deactivate
+```
 
 ---
 
