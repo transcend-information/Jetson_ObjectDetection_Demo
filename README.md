@@ -11,7 +11,9 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 * [Hardware Requirements](#hardware-requirements)
 * [Install NVIDIA Jetson Nano OS](#install-nvidia-jetson-nano-os)
 * [Download Virtual Environment](#download-virtual-environment)
+* [Download ECM300 New Patch](#download-ecm300-new-patch)
 * [Connect the ECM300 Camera](#connect-the-ecm300-camera-to-jetson-orin-nano)
+* [Update ECM300 Patch](#update-ecm300-patch)
 * [Quicky Run Object Detect](#quicky-run-object-detect)
 * [Run Object Detect](#run-object-detect)
 * [Third-Party Licenses](#third-party-licenses)
@@ -50,6 +52,11 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 3. Copy the extracted **object_detect_demo_venv** folder to the desktop.
 
 ---
+## Download ECM300 New Patch
+
+1. Download the **ECM300 Patch** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/ECM300_Patch.zip
+2. Extract the downloaded file in the Jetson Nano OS provided in the previous step.
+3. Copy the extracted **ECM300_Patch** folder to the Desktop.
 ---
 
 ## Connect the ECM300 Camera to Jetson ORIN Nano
@@ -80,6 +87,15 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 5. If **/dev/video0** appears, the ECM300 has been successfully connected.
 
+---
+
+## Update ECM300 Patch
+
+
+```bash
+cd Desktop/ECM300_Patch
+sudo ./install.sh
+```
 ---
 
 ## Quicky Run Object Detect
