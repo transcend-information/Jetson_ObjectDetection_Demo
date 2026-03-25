@@ -30,7 +30,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 3. **Recommended SD Card**
 
-   * A microSD card with at least **128 GB** capacity and **UHS-1** speed class.
+   * A microSD card with more than **150 GB** capacity and **UHS-1** speed class.
 
 ---
 
