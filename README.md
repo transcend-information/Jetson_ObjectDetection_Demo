@@ -13,6 +13,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 * [Download Virtual Environment](#download-virtual-environment)
 * [Connect the ECM300 Camera](#connect-the-ecm300-camera-to-jetson-orin-nano)
 * [Quicky Run Object Detect](#quicky-run-object-detect)
+* [Set Up Virtual Environment](#set-up-a-virtual-environment)
 * [Run Object Detect](#run-object-detect)
 * [Third-Party Licenses](#third-party-licenses)
 
@@ -30,13 +31,13 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 3. **Recommended SD Card**
 
-   * A microSD card with more than **150 GB** capacity and **UHS-1** speed class.
+   * A microSD card with at least **128 GB** capacity and **UHS-1** speed class.
 
 ---
 
 ## Install NVIDIA Jetson Nano OS
 
-1. Download the **Jetson Nano Developer Kit SD Card Image** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/ecm_jetpackNew.zip
+1. Download the **Jetson Nano Developer Kit SD Card Image** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/ecm300_jetpack.zip
 2. Write the image to the target microSD card using a graphical tool such as [Balena Etcher](https://etcher.balena.io/).
 3. Once the image has been written, insert the microSD card into the Jetson’s native slot and power on the device.
 4. The default login username and password are both “user”.
@@ -46,9 +47,10 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 ## Download Virtual Environment
 
 1. Download the **Virtual Environment** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/object_detect_demo_venv.zip
-2. Unzip the downloaded ZIP file on the Jetson Orin Nano.
+2. Unzip the downloaded ZIP file.
 3. Copy the extracted **object_detect_demo_venv** folder to the desktop.
 
+---
 ---
 
 ## Connect the ECM300 Camera to Jetson ORIN Nano
@@ -89,58 +91,48 @@ cd Desktop/object_detect_demo_venv
 ./run_webcam.sh
 ```
 
-**Note:** If you get a "Permission denied" error, you may need to give full execution permissions to the folder. Run this command:
-```
-chmod -R 777 ~/Desktop/object_detect_demo_venv
-```
-
 ### 2. Choose the Detection Classes
 When prompted, select the desired object classes, or enter 'd' to use the default list.
 <img src="images/class_list.png" width="850">
-
-Example:
-If you want to detect Person, Glasses, Tie, and Monitor/TV, enter: 233,136,325,201
-<img src="images/choose_classes_example.png" width="850">
 
 Press 'q' to exit fullscreen mode.
 
 ---
 
+## Set Up a Virtual Environment
+
+```bash
+cd Desktop/object_detect_demo_venv
+source .venv/bin/activate
+```
+
+To deactivate the virtual environment:
+
+```bash
+deactivate
+```
+
+---
+
 ## Run Object Detect
 
-### 1. Set up a virtual camera
-
+### 1.Set Up a Virtual Camera 
 ```bash
 sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VirtualCam" exclusive_caps=1
 ```
 
-### 2. Start the GStreamer pipeline
-
+### 2.Start the GStreamer Pipeline
 ```bash
 echo "Starting GStreamer camera pipeline in the background..."
 gst-launch-1.0 nvarguscamerasrc ! 'video/x-raw(memory:NVMM),width=1920,height=1080,format=NV12,framerate=30/1' ! nvvidconv ! 'video/x-raw, format=I420' ! videoconvert ! 'video/x-raw, format=BGR' ! v4l2sink device=/dev/video10
 ```
 
-### 3. Set Up a Virtual Environment
-Open a new terminal window, then activate the virtual environment before running the detection script.
-
-Activate the virtual environment:
-```bash
-cd ~/Desktop/object_detect_demo_venv
-source .venv/bin/activate
-```
-
-### 4. Run the YOLO detection script:
+### 3.Run the YOLO detection script
 ```bash
 python webcam_yolo.py
 ```
 
 Press 'q' to exit fullscreen mode.
-
-To deactivate the virtual environment:
-```bash
-deactivate
-```
 
 ---
 
