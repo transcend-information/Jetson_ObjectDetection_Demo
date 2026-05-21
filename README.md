@@ -15,6 +15,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 * [Quicky Run Object Detect](#quicky-run-object-detect)
 * [Set Up Virtual Environment](#set-up-a-virtual-environment)
 * [Run Object Detect](#run-object-detect)
+* [Troubleshooting](#troubleshooting)
 * [Third-Party Licenses](#third-party-licenses)
 
 ---
@@ -37,7 +38,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 ## Install NVIDIA Jetson Nano OS
 
-1. Download the **Jetson Nano Developer Kit SD Card Image** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/ecm300_jetpack.zip
+1. Download the **Jetson Nano Developer Kit SD Card Image** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/ecm300_jetpack_v2.zip
 2. Write the image to the target microSD card using a graphical tool such as [Balena Etcher](https://etcher.balena.io/).
 3. Once the image has been written, insert the microSD card into the Jetson’s native slot and power on the device.
 4. The default login username and password are both “user”.
@@ -46,7 +47,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 ## Download Virtual Environment
 
-1. Download the **Virtual Environment** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/object_detect_demo_venv.zip
+1. Download the **Virtual Environment** from https://s3.ap-northeast-1.amazonaws.com/test.storejetcloud.com/ECM300+Image/object_detect_demo_venv_v2.zip
 2. Unzip the downloaded ZIP file.
 3. Copy the extracted **object_detect_demo_venv** folder to the desktop.
 
@@ -87,7 +88,7 @@ This project demonstrates real-time Object Detection on the **NVIDIA Jetson ORIN
 
 ### 1. Run the Script run_webcam.sh
 ```bash
-cd Desktop/object_detect_demo_venv
+cd ~/Desktop/object_detect_demo_venv
 ./run_webcam.sh
 ```
 
@@ -102,7 +103,7 @@ Press 'q' to exit fullscreen mode.
 ## Set Up a Virtual Environment
 
 ```bash
-cd Desktop/object_detect_demo_venv
+cd ~/Desktop/object_detect_demo_venv
 source .venv/bin/activate
 ```
 
@@ -135,6 +136,16 @@ python webcam_yolo.py
 Press 'q' to exit fullscreen mode.
 
 ---
+
+## Troubleshooting
+If GPU acceleration is not available or the program is running on CPU only, please activate your `venv` environment and install the following packages:
+
+```bash
+cd ~/Desktop/object_detect_demo_venv
+source .venv/bin/activate
+pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/torch-2.5.0a0+872d972e41.nv24.08-cp310-cp310-linux_aarch64.whl
+pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/torchvision-0.20.0a0+afc54f7-cp310-cp310-linux_aarch64.whl
+```
 
 ## Third-Party Licenses
 
